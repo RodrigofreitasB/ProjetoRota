@@ -1,0 +1,336 @@
+.login-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #121214;
+    /* Deep dark background */
+    background-image: radial-gradient(circle at 50% 0%, #2a2a2e 0%, #121214 60%);
+    font-family: 'Inter', sans-serif;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- Split Card (Hybrid) --- */
+.login-card-split {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    height: 600px;
+    background: #18181b;
+    /* Dark card background */
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    /* Animation Initial State */
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.login-card-split.animate-slide-down {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+    /* Wait for splash screen */
+}
+
+/* --- Left Side: Branding --- */
+.branding-section {
+    flex: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    color: white;
+}
+
+.branding-content h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.branding-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 30px 0;
+}
+
+.dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dots span {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+.dots span:first-child {
+    background: white;
+}
+
+/* --- Right Side: Form --- */
+.form-section {
+    flex: 1;
+    background: #18181b;
+    /* Dark background for form side */
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+.form-header {
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 0;
+    opacity: 0.7;
+}
+
+.form-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #fff;
+}
+
+.form-header p {
+    color: #888;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 400;
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Dark input bg */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #fff;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.input-field:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #fff;
+    /* White button for contrast on dark form */
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    background: #e0e0e0;
+}
+
+.switch-mode {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 4px;
+    opacity: 0.8;
+}
+
+.link-btn:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.error-text {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .login-card-split {
+        flex-direction: column;
+        height: auto;
+        max-width: 450px;
+    }
+
+    .branding-section {
+        height: 180px;
+        padding: 30px;
+    }
+
+    .branding-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-section {
+        padding: 30px;
+    }
+}
+
+/* --- Splash Screen --- */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s ease-in-out;
+}
+
+.splash-screen.slide-down {
+    transform: translateY(100%);
+}
+
+.typing-text {
+    color: white;
+    font-size: 3rem;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+        typing 2.5s steps(30, end),
+        blink-caret .95s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: orange
+    }
+}
+
+@media (max-width: 768px) {
+    .typing-text {
+        font-size: 1.5rem;
+    }
+
+    .branding-section {
+        display: none;
+    }
+}

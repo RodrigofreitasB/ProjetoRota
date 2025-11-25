@@ -1,0 +1,432 @@
+.rota-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.rota-map-container {
+    width: 100%;
+    height: 100%;
+}
+
+.rota-cards-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.rota-card {
+    color: #f3f4f6;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    pointer-events: auto;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.rota-card-header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rota-card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.rota-input-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.rota-input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.875rem;
+    color: white;
+}
+
+.rota-input-field {
+    width: 100%;
+    padding: 12px;
+    background-color: #374151;
+    border: 1px solid #4b5563;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.rota-input-field:focus {
+    border-color: #3b82f6;
+}
+
+.rota-suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #374151;
+    border: 1px solid #4b5563;
+    border-radius: 8px;
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 50;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.rota-suggestion-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #4b5563;
+    font-size: 0.9rem;
+    color: #d1d5db;
+}
+
+.rota-suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.rota-suggestion-item:hover {
+    background-color: #4b5563;
+}
+
+.rota-mode-select {
+    width: 100%;
+    padding: 12px;
+    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.rota-mode-select-item {
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #d1d5db;
+    background-color: #374151;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rota-mode-select-item.active {
+    background-color: #3b82f6;
+}
+
+.rota-search-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+
+.rota-search-button:hover {
+    background-color: #1d4ed8;
+}
+
+.rota-instructions-list {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 5px;
+}
+
+.rota-instruction-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #374151;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+    transition: opacity 0.3s;
+}
+
+.rota-instruction-item.completed {
+    opacity: 0.5;
+    border-left-color: #10b981;
+    /* Green */
+}
+
+.rota-instruction-checkbox {
+    margin-right: 12px;
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #10b981;
+}
+
+.rota-instruction-text {
+    flex: 1;
+}
+
+.rota-instruction-meta {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+.rota-destination-reached {
+    background-color: #10b981;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.Expandir-Card {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+.rota-instructions-list {
+    max-height: 300px;
+    transition: max-height 0.6s ease;
+}
+
+.rota-instructions-list.expandido {
+    max-height: 1000px;
+}
+
+.rota-cards-container.rota-card-expandido {
+    max-height: 60vh;
+}
+
+.rota-card-extend-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+/* Logout Button */
+.rota-logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 50;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.rota-logout-button:hover {
+    background-color: #dc2626;
+    transform: scale(1.05);
+}
+
+/* Mobile Summary Card */
+.rota-mobile-summary {
+    display: none;
+    /* Hidden on desktop */
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: rgba(31, 41, 55, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    z-index: 60;
+    color: white;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.rota-mobile-summary-content {
+    flex: 1;
+}
+
+.rota-mobile-summary-header {
+    display: flex;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-bottom: 5px;
+}
+
+.rota-summary-time {
+    color: #10b981;
+    font-weight: bold;
+}
+
+.rota-summary-instruction {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.rota-mobile-expand-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.rota-route-info {
+    font-size: 0.9rem;
+    color: #10b981;
+    margin-top: 5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .rota-cards-container {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        max-height: 20vh;
+        /* Limit height so map is visible */
+        overflow-y: auto;
+        /* Allow scrolling if cards overflow */
+        pointer-events: none;
+        /* Container passes clicks */
+        transition: max-height 0.6s ease;
+    }
+
+    .rota-card {
+        width: 100%;
+        max-height: none;
+        /* Let container handle height */
+        pointer-events: auto;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .rota-input-card {
+        order: 1;
+        /* Ensure input is visible or accessible */
+    }
+
+    .rota-directions-card {
+        order: 2;
+        flex: 1;
+    }
+
+    /* Mobile Logic */
+    .rota-cards-container.mobile-collapsed {
+        display: none;
+    }
+
+    .rota-cards-container.mobile-expanded {
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .rota-mobile-summary {
+        display: flex;
+    }
+
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .Expandir-Card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+
+}
