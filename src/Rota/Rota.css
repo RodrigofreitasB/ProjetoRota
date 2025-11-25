@@ -1,3 +1,8 @@
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+
 .rota-container {
     position: relative;
     width: 100vw;
