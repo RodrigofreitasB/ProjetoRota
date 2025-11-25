@@ -29,6 +29,14 @@ function Rota() {
 
     const [checkedSteps, setCheckedSteps] = useState({});
 
+    useEffect(() => {
+        if (expandido) {
+            document.body.classList.add("no-scroll");
+        } else {
+            document.body.classList.remove("no-scroll");
+        }
+    }, [expandido]);
+
     // Buscar sugestões conforme a pessoa digita
     const buscarSugestoes = async (texto, tipo) => {
         if (texto.length < 3) {
