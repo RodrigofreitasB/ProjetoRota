@@ -1,5 +1,4 @@
 body {
-    overflow: hidden;
     height: 100vh;
     max-height: 100vh;
 }
@@ -167,6 +166,7 @@ body {
 
 .rota-instructions-list {
     overflow-y: auto;
+    overflow-x: hidden;
     flex: 1;
     padding-right: 5px;
 }
@@ -360,8 +360,18 @@ body {
     background-color: #1d4ed8;
 }
 
+.next-step {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.rota-card-expandido .next-step {
+    display: none !important;
+}
+
 .rota-instructions-list {
     overflow-y: auto;
+    overflow-x: hidden;
     flex: 1;
     padding-right: 5px;
 }
@@ -545,42 +555,50 @@ body {
     margin-top: 5px;
 }
 
+.button-rota {
+    display: none;
+}
+
+.button-directions {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+}
+
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .rota-cards-container {
-        top: auto;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        gap: 0;
-        padding: 0;
-        box-sizing: border-box;
-        max-height: 10vh;
-        /* Default collapsed height */
-        overflow-y: hidden;
-        pointer-events: none;
-        transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s;
-        border-radius: 20px 20px 0 0;
-        background-color: transparent;
+    .button-rota {
+        display: flex;
     }
 
-    /* When expanded (full screen) */
-    .rota-cards-container.rota-card-expandido {
-        max-height: 100vh;
-        height: 100vh;
+    .rota-cards-container {
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 5px;
+        bottom: 0;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
-        /* Dark background when full */
+    .rota-input-card.rota-card-expandido {
         pointer-events: auto;
         overflow-y: auto;
         padding-top: 20px;
-        /* Space for status bar/notch */
+        min-height: 50vh;
     }
 
-    /* When NOT expanded but has content (auto height up to a limit) */
-    .rota-cards-container:not(.rota-card-expandido) {
-        pointer-events: none;
-        /* Let clicks pass through to map */
+
+    .rota-input-group {
+        display: none;
+    }
+
+    .rota-card.rota-card-expandido .rota-input-group {
+        display: flex !important;
+        flex-direction: column;
     }
 
     .rota-card {
@@ -591,28 +609,28 @@ body {
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-bottom: none;
-        border-radius: 20px 20px 0 0;
-        /* Rounded top corners */
+        border-radius: 20px 20px 20px 20px;
         margin-bottom: 0;
         padding-bottom: 30px;
-        /* Safe area for bottom */
     }
 
-    /* Hide the second card (instructions) when collapsed if we want to save space, 
-       OR let them stack. The user said "when clicked... opens up covering the screen".
-       So initially we might just show the input card. */
 
     .rota-input-card {
         order: 1;
         z-index: 20;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
     }
 
     .rota-directions-card {
         order: 2;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 0;
-        /* Connects to the input card */
+
         padding-top: 20px;
+        overflow-x: hidden;
     }
 
     /* Adjust Expand Button */

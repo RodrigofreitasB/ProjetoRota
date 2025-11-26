@@ -255,11 +255,11 @@ function Rota() {
             </button>
 
 
-            <div className={`rota-cards-container  ${rotaExpandida ? 'rota-card-expandido' : ''}`}>
+            <div className="rota-cards-container">
                 {/* Card de Input */}
 
-                <div className="rota-card rota-input-card">
-                    <div className="Expandir-Card" onClick={() => setRotaExpandida(!rotaExpandida)}>{rotaExpandida ? <IoIosArrowUp size={20} /> : <IoChevronDown size={20} />}</div>
+                <div className={`rota-card rota-input-card  ${rotaExpandida ? 'rota-card-expandido' : ''}`}>
+
                     {/* Campo de Origem */}
                     <div className="rota-input-group">
                         <label className="rota-input-label">Origem</label>
@@ -330,14 +330,20 @@ function Rota() {
                         </div>
                     </div>
 
-                    <button className="rota-search-button" onClick={buscarRota}>
+                    <button className="rota-input-group  rota-search-button" onClick={buscarRota}>
                         Buscar Rota
                     </button>
+                    <div className="button-rota" onClick={() => setRotaExpandida(!rotaExpandida)}>
+
+                        {rotaExpandida ? <IoChevronUp /> : <IoChevronDown />}
+                    </div>
                 </div>
 
                 {/* Card de Instruções */}
                 {mostrarInstrucoes && (
-                    <div className="rota-card rota-directions-card">
+                    <div className={`rota-card rota-directions-card ${expandido ? "rota-card-expandido" : ""}`}>
+
+                        <button className="button-directions" onClick={() => setExpandido(!expandido)}> {expandido ? <IoChevronDown /> : <IoChevronUp />}</button>
                         <div className="rota-card-header">
                             <div>
                                 <h3 className="rota-card-title">Instruções</h3>
@@ -352,8 +358,27 @@ function Rota() {
                             </span>
                         </div>
 
+
+
+
+                        <div className="next-step"  >
+                            {instrucoes.length > 0 && (
+                                <div className={`rota-instruction-item ${checkedSteps[currentInstructionIndex !== -1 ? currentInstructionIndex : instrucoes.length - 1] ? 'completed' : ''}`}>
+                                    <input
+                                        type="checkbox"
+                                        className="rota-instruction-checkbox"
+                                        checked={!!checkedSteps[currentInstructionIndex !== -1 ? currentInstructionIndex : instrucoes.length - 1]}
+                                        onChange={() => toggleStep(currentInstructionIndex !== -1 ? currentInstructionIndex : instrucoes.length - 1)}
+                                    />
+                                    <div className="rota-instruction-text">
+                                        <div>{currentInstructionIndex !== -1 ? instrucoes[currentInstructionIndex].instrucao : instrucoes[instrucoes.length - 1].instrucao}</div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
                         <div className={`rota-instructions-list ${expandido ? 'expandido' : ''}`}>
-                            {instrucoes.map((instrucao, index) => (
+                            {expandido && instrucoes.map((instrucao, index) => (
                                 <div
                                     key={index}
                                     className={`rota-instruction-item ${checkedSteps[index] ? 'completed' : ''}`}
@@ -369,7 +394,6 @@ function Rota() {
                                     </div>
                                 </div>
                             ))}
-
                         </div>
 
                         {allStepsChecked && (
