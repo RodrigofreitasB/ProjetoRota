@@ -30,12 +30,12 @@ function Rota() {
     const [checkedSteps, setCheckedSteps] = useState({});
 
     useEffect(() => {
-        if (expandido) {
+        if (rotaExpandida) {
             document.body.classList.add("no-scroll");
         } else {
             document.body.classList.remove("no-scroll");
         }
-    }, [expandido]);
+    }, [rotaExpandida]);
 
     // Buscar sugestões conforme a pessoa digita
     const buscarSugestoes = async (texto, tipo) => {
@@ -102,6 +102,9 @@ function Rota() {
 
             // 6. Ajustar o zoom do mapa para mostrar toda a rota
             ajustarZoom(coordOrigem, coordDestino);
+
+            // Expandir o card para mostrar as instruções
+            setRotaExpandida(true);
 
         } catch (error) {
             console.error("Erro ao buscar rota:", error);
@@ -368,11 +371,7 @@ function Rota() {
                             ))}
 
                         </div>
-                        <div onClick={() => setExpandido(!expandido)} className="rota-card-extend">
-                            <button className="rota-card-extend-button">
-                                {expandido ? <IoIosArrowUp size={20} /> : <IoChevronDown size={20} />}
-                            </button>
-                        </div>
+
                         {allStepsChecked && (
                             <div className="rota-destination-reached">
                                 🎉 Você chegou ao seu destino!
