@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 import { useNavigate } from 'react-router-dom';
+import { VscVerifiedFilled } from "react-icons/vsc";
 import Rota from '../Rota/Rota';
 
 const Login = () => {
@@ -43,7 +44,10 @@ const Login = () => {
                     return;
                 }
                 await createUserWithEmailAndPassword(auth, regEmail, regPassword);
-                alert('Usuário cadastrado com sucesso!');
+                document.querySelector('.sucess-text').classList.remove('d-none');
+
+
+
             }
         } catch (err) {
             console.error(err);
@@ -154,8 +158,10 @@ const Login = () => {
                             )}
 
 
-
-
+                            <div className="sucess-text d-none">
+                                <VscVerifiedFilled size={24} />
+                                <p>Cadastro realizado com sucesso!</p>
+                            </div>
 
                             {/* Errors */}
                             {isLogin && loginError && <div className="error-text">{loginError}</div>}
