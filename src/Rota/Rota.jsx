@@ -328,11 +328,12 @@ function Rota() {
                             <div className={"rota-mode-select-item" + (modo === "cycling" ? " active" : "")} onClick={() => setModo("cycling")}><MdDirectionsBike /></div>
                             <div className={"rota-mode-select-item" + (modo === "walking" ? " active" : "")} onClick={() => setModo("walking")}><FaPersonWalking /></div>
                         </div>
+                        <button className="rota-search-button" onClick={buscarRota}>
+                            Buscar Rota
+                        </button>
                     </div>
 
-                    <button className="rota-input-group  rota-search-button" onClick={buscarRota}>
-                        Buscar Rota
-                    </button>
+
                     <div className="button-rota" onClick={() => setRotaExpandida(!rotaExpandida)}>
 
                         {rotaExpandida ? <IoChevronUp /> : <IoChevronDown />}
