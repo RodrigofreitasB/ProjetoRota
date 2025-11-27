@@ -584,8 +584,9 @@ body {
     }
 
     .rota-container {
-        height: 100dvh !important;
-        max-height: 100dvh !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
         overflow: hidden !important;
     }
 
@@ -601,6 +602,9 @@ body {
         bottom: 0;
         flex-direction: column;
         justify-content: space-between;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
     }
 
     .rota-input-card.rota-card-expandido {
